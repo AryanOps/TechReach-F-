@@ -43,19 +43,24 @@ const getAllOrders = async (req, res) => {
 // @route   PUT /api/orders/:id/status
 // @access  Private/Admin
 const updateOrderStatus = async (req, res) => {
-    const order = await Order.findById(req.params.id);
+    try {
+        const order = await Order.findById(req.params.id);
 
-    if (order) {
-        order.status = req.body.status || order.status;
-        if (req.body.status === 'Completed') {
-            order.isPaid = true;
-            order.paidAt = Date.now();
+        if (order) {
+            order.status = req.body.status || order.status;
+            if (req.body.status === 'Completed') {
+                order.isPaid = true;
+                order.paidAt = Date.now();
+            }
+
+            const updatedOrder = await order.save();
+            res.json(updatedOrder);
+        } else {
+            res.status(404).json({ message: 'Order not found' });
         }
-
-        const updatedOrder = await order.save();
-        res.json(updatedOrder);
-    } else {
-        res.status(404).json({ message: 'Order not found' });
+    } catch (error) {
+        console.error("Update Order Status Error:", error);
+        res.status(500).json({ message: error.message || "Internal Server Error" });
     }
 };
 
