@@ -256,7 +256,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, user, onLogout, notifi
                 
                 <a href="https://www.facebook.com/share/1FXQ7o2avS/" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-premium-royal transition-colors"><Facebook className="w-4 h-4" /></a>
                 <a href="https://www.instagram.com/techr_each?igsh=MmpveHZ2aHhwcGo3" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-premium-royal transition-colors"><Instagram className="w-4 h-4" /></a>
-                <a href="https://whatsapp.com/channel/0029Vb75DdLCXC3N2LEdye1O"className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-500 transition-colors"><Whatsapp className="w-4 h-4 text-white" /> </a>
+                <a href="https://whatsapp.com/channel/0029Vb75DdLCXC3N2LEdye1O" className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-premium-royal transition-colors"><Whatsapp className="w-4 h-4" /></a>
+
               </div>
             </div>
             
