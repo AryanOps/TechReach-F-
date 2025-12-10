@@ -14,7 +14,7 @@ const connectDB = async () => {
 
     if (!cached.promise) {
         const opts = {
-            bufferCommands: false,
+            bufferCommands: true, // Explicitly enable buffering (or remove to use default true)
         };
 
         console.log("Creating new MongoDB connection to:", process.env.MONGO_URI);
