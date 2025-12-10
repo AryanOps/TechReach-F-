@@ -50,9 +50,22 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        console.log(`Login attempt for: ${email}`);
         const user = await User.findOne({ email });
 
-        if (user && (await user.matchPassword(password))) {
+        if (!user) {
+            console.log("User not found via findOne");
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+
+        const isMatch = await user.matchPassword(password);
+        if (!isMatch) {
+            console.log("Password mismatch");
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+
+        if (user && isMatch) {
+            console.log("Login successful");
             res.json({
                 _id: user._id,
                 name: user.name,
@@ -60,10 +73,9 @@ const loginUser = async (req, res) => {
                 role: user.role,
                 token: generateToken(user._id),
             });
-        } else {
-            res.status(401).json({ message: 'Invalid email or password' });
         }
     } catch (error) {
+        console.error("Login error:", error);
         res.status(500).json({ message: error.message });
     }
 };
