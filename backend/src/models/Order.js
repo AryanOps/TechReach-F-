@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: 'Pending',
-        enum: ['Pending', 'Completed', 'Cancelled'],
+        enum: ['Pending', 'Completed', 'Cancelled', 'pending', 'completed', 'cancelled', 'active'],
     },
     isPaid: {
         type: Boolean,
