@@ -576,10 +576,25 @@ const AppContent = () => {
     setServices(prev => [newService, ...prev]);
   };
 
-  const handleUpdateOrder = (id: string, status: Order['status'], deliverables?: string) => {
-    setOrders(prev => prev.map(o => o.id === id ? { ...o, status, deliverables } : o));
-    // Optionally update Supabase status here as well
-    // supabase.from('orders').update({ status }).eq('id', id)...
+  const handleUpdateOrder = async (id: string, status: Order['status'], deliverables?: string) => {
+    try {
+      const { data } = await api.put(`/orders/${id}/status`, { status });
+
+      // Update local state with the returned updated order from backend
+      // Mapper: Backend returns full order object.
+      const updatedOrder = data; // Assuming backend returns the object. 
+      // We need to match the frontend 'Order' type mapping if structure differs.
+
+      setOrders(prev => prev.map(o => o.id === id ? {
+        ...o,
+        status: (updatedOrder.status?.toLowerCase() as any) || status,
+        deliverables
+      } : o));
+
+    } catch (error: any) {
+      console.error("Failed to update order:", error);
+      alert("Failed to update order: " + (error.response?.data?.message || "Unknown error"));
+    }
   };
 
   // Message Handling
