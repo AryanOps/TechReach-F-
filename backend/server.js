@@ -21,6 +21,17 @@ const adminRoutes = require('./src/routes/adminRoutes');
 // Database Connection
 connectDB();
 
+// Middleware to ensure DB is connected before processing requests (Relevant for Serverless)
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        console.error("Database connection failed:", error);
+        res.status(500).json({ error: "Database connection failed" });
+    }
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
