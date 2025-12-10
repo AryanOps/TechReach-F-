@@ -9,7 +9,7 @@ export const MOCK_SERVICES: Service[] = [
     title: "Professional Logo Design & Branding Kit",
     description: "I will design a modern, minimalist logo and complete branding kit for your startup.",
     fullDescription: "Get a complete brand identity overhaul directly from me. This package includes a main logo, secondary logo, color palette, typography selection, and brand guidelines. I specialize in minimalist and modern designs that stand the test of time.",
-    price: 150,
+    price: 100,
     rating: 4.9,
     reviewCount: 128,
     image: "https://picsum.photos/seed/design1/800/600",
@@ -26,7 +26,7 @@ export const MOCK_SERVICES: Service[] = [
     title: "Full Stack React & Node.js Application",
     description: "I will build a scalable, high-performance web application using React, TypeScript, and Node.js.",
     fullDescription: "Need a custom SaaS platform or an internal tool? I provide end-to-end development services. From database design with PostgreSQL to a responsive React frontend with Tailwind CSS. Includes deployment setup.",
-    price: 1200,
+    price: 200,
     rating: 5.0,
     reviewCount: 45,
     image: "https://picsum.photos/seed/code2/800/600",
@@ -70,7 +70,7 @@ export const MOCK_SERVICES: Service[] = [
     title: "Explainer Video Animation",
     description: "I will create a 2D animated explainer video to showcase your product.",
     fullDescription: "Engage your customers with a fun and informative animated video. I handle everything from scriptwriting (optional) to voiceover and animation.",
-    price: 350,
+    price: 150,
     rating: 4.9,
     reviewCount: 56,
     image: "https://picsum.photos/seed/video5/800/600",
@@ -100,14 +100,14 @@ export const TESTIMONIALS = [
     id: 1,
     name: "Sarah Jenkins",
     role: "CEO, TechStart",
-    text: "TeachReach transformed how we build. Aqib's expertise is unmatched. We built our MVP in record time.",
+    text: "TeachReach transformed how we build.We built our MVP in record time.",
     avatar: "https://picsum.photos/seed/p1/100/100"
   },
   {
     id: 2,
     name: "Michael Chen",
     role: "Marketing Director",
-    text: "I found amazing design services here. The workflow is so smooth and Aqib is very responsive.",
+    text: "I found amazing design services here.",
     avatar: "https://picsum.photos/seed/p2/100/100"
   },
   {
